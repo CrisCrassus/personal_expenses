@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
-import 'models/transaction.dart';
+import 'package:personal_expenses/widgets/new_transaction.dart';
+import 'package:personal_expenses/widgets/transaction_list.dart';
+import 'package:personal_expenses/widgets/transactions_item.dart';
+
+
 
 void main() => runApp(MyApp());
 
@@ -14,29 +18,22 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  final List<Transaction> transactions = [
-    Transaction(
-      id: 't1',
-      title: 'New Shoes',
-      amount: 95.99,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'Groceries',
-      amount: 32.78,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'New Phone',
-      amount: 132.78,
-      date: DateTime.now(),
-    )
-  ];
+class MyHomePage extends StatefulWidget {
 
   MyHomePage({Key key}) : super(key: key);
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  
+
+/*   String titleInput;
+  String amountInput; */
+
+  final titleController = TextEditingController();
+  final amountController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -67,53 +64,8 @@ class MyHomePage extends StatelessWidget {
                   ),
                 ),
               ),
-              Column(
-                children: transactions.map(
-                  (tx) {
-                    return Card(
-                      child: Row(
-                        children: <Widget>[
-                          Container(
-                            padding: EdgeInsets.all(10),
-                            margin: EdgeInsets.symmetric(
-                                vertical: 20, horizontal: 10),
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Colors.deepPurple,
-                                width: 2,
-                              ),
-                            ),
-                            child: Center(
-                              child: Text(
-                                '£' + tx.amount.toString(),
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.deepPurple,
-                                ),
-                              ),
-                            ),
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              Text(
-                                tx.title,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 20,
-                                ),
-                              ),
-                              Text(
-                                tx.date.toString(),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    );
-                  },
-                ).toList(),
-              ),
+              NewTransaction(),
+              TransactionList(),
             ],
           ),
         ),
@@ -121,3 +73,4 @@ class MyHomePage extends StatelessWidget {
     );
   }
 }
+
