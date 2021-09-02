@@ -28,7 +28,32 @@ class MyHomePage extends StatelessWidget {
           'Personal Expenses',
         ),
       ),
-      body: UserTransaction(),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              /* Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Card(
+                color: Colors.blueGrey,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Center(child: Text('CHART')),
+                    ],
+                  ),
+                ),
+              ),
+            ), */
+              UserTransaction(),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

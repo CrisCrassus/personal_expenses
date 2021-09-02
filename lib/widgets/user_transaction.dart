@@ -51,34 +51,13 @@ class _UserTransactionState extends State<UserTransaction> {
   @override
   Widget build(BuildContext context) {
     print('Building UserTransaction');
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Card(
-                color: Colors.blueGrey,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Center(child: Text('CHART')),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            NewTransaction(
-              txHandler: _addNewTransaction,
-            ),
-            TransactionList(_userTransaction),
-          ],
+    return Column(
+      children: [
+        NewTransaction(
+          txHandler: _addNewTransaction,
         ),
-      ),
+        TransactionList(_userTransaction),
+      ],
     );
   }
 }
