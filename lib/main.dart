@@ -23,6 +23,7 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(
           'Personal Expenses',
@@ -34,9 +35,7 @@ class MyHomePage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              /* Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Card(
+              /* Card(
                 color: Colors.blueGrey,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -47,8 +46,7 @@ class MyHomePage extends StatelessWidget {
                     ],
                   ),
                 ),
-              ),
-            ), */
+              ), */
               UserTransaction(),
             ],
           ),

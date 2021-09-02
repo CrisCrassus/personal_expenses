@@ -8,6 +8,10 @@ class NewTransaction extends StatelessWidget {
 
   NewTransaction({Key key, this.txHandler}) : super(key: key);
 
+  void submitData() {
+    txHandler(titleController.text, double.parse(amountController.text));
+  }
+
   @override
   Widget build(BuildContext context) {
     print('------> Building NewTransaction');
@@ -32,10 +36,7 @@ class NewTransaction extends StatelessWidget {
               ),
             ),
             TextButton(
-              onPressed: () {
-                txHandler(
-                    titleController.text, double.parse(amountController.text));
-              },
+              onPressed: () {},
               child: Text('Add Transaction'),
             )
           ],
