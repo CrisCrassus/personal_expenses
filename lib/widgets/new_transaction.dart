@@ -9,7 +9,17 @@ class NewTransaction extends StatelessWidget {
   NewTransaction({Key key, this.txHandler}) : super(key: key);
 
   void submitData() {
-    txHandler(titleController.text, double.parse(amountController.text));
+    final enteredTitle = titleController.text;
+    final enteredAmount = double.parse(amountController.text);
+
+    if (enteredTitle.isEmpty || enteredAmount <= 0) {
+      return;
+    }
+
+    txHandler(
+      enteredTitle,
+      enteredAmount,
+    );
   }
 
   @override
@@ -34,11 +44,11 @@ class NewTransaction extends StatelessWidget {
               decoration: InputDecoration(
                 labelText: 'Amount',
               ),
+              onSubmitted: (_) => submitData(),
             ),
             TextButton(
               onPressed: () {
-                txHandler(
-                    titleController.text, double.parse(amountController.text));
+                submitData();
               },
               child: Text('Add Transaction'),
             )

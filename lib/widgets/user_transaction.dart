@@ -53,9 +53,7 @@ class _UserTransactionState extends State<UserTransaction> {
     print('Building UserTransaction');
     return Column(
       children: [
-        NewTransaction(
-          txHandler: _addNewTransaction,
-        ),
+        NewTransaction(txHandler: _addNewTransaction),
         TransactionList(_userTransaction),
       ],
     );

@@ -28,7 +28,7 @@ class TransactionList extends StatelessWidget {
                   ),
                   child: Center(
                     child: Text(
-                      '£' + transactions[index].amount.toString(),
+                      '£ ${transactions[index].amount.toStringAsFixed(2)}',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Colors.deepPurple,
@@ -51,6 +51,7 @@ class TransactionList extends StatelessWidget {
                     ),
                   ],
                 ),
+                
               ],
             ),
           );
