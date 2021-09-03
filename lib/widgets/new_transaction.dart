@@ -49,11 +49,11 @@ class _NewTransactionState extends State<NewTransaction> {
             ),
             TextButton(
               onPressed: () {
-                
                 widget.txHandler(
                   titleController.text,
                   double.parse(amountController.text),
                 );
+                
                 titleController.clear();
                 amountController.clear();
               },

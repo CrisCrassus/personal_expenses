@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:personal_expenses/models/transaction.dart';
+import 'package:personal_expenses/widgets/overview_task_container.dart';
 
 class TransactionList extends StatelessWidget {
   final List<Transaction> transactions;
@@ -11,10 +12,10 @@ class TransactionList extends StatelessWidget {
   Widget build(BuildContext context) {
     print('Building TransactionList');
     return Container(
-      height: 300,
+      height: 500,
       child: ListView.builder(
         itemBuilder: (ctx, index) {
-          return Card(
+          return OverviewTaskContainer()/* Card(
             child: Row(
               children: <Widget>[
                 Container(
@@ -22,7 +23,7 @@ class TransactionList extends StatelessWidget {
                   margin: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: Colors.deepPurple,
+                      color: Theme.of(context).accentColor,
                       width: 2,
                     ),
                   ),
@@ -31,7 +32,7 @@ class TransactionList extends StatelessWidget {
                       '£${transactions[index].amount.toStringAsFixed(2)}',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: Colors.deepPurple,
+                        color: Theme.of(context).primaryColorDark,
                       ),
                     ),
                   ),
@@ -54,7 +55,7 @@ class TransactionList extends StatelessWidget {
                 
               ],
             ),
-          );
+          ) */;
         },
         itemCount: transactions.length,
       ),

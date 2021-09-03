@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:personal_expenses/models/transaction.dart';
+import 'package:personal_expenses/widgets/overview_task_container.dart';
 
 class TransactionItem extends StatelessWidget {
   final Transaction tx;
@@ -10,7 +11,12 @@ class TransactionItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+    return OverviewTaskContainer();
+  }
+}
+
+
+/* Card(
       child: Row(
         children: <Widget>[
           Container(
@@ -50,6 +56,4 @@ class TransactionItem extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
+    ); */
