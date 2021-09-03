@@ -11,4 +11,13 @@ class Transaction {
       @required this.title,
       @required this.amount,
       @required this.date});
+
+  Map<String, dynamic> toJson(){
+  return {
+    "id": this.id,
+    "title": this.title,
+    "amount": this.amount.toString(),
+    "date": this.date
+  };
+}
 }

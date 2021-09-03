@@ -12,7 +12,7 @@ ThemeData themes(String theme) {
           fontFamily: 'Raleway',
           appBarTheme: AppBarTheme(
               textTheme: ThemeData.dark().textTheme.copyWith(
-                      title: TextStyle(
+                      headline6: TextStyle(
                     fontWeight: FontWeight.w100,
                     fontSize: 25,
                   ))));
@@ -24,7 +24,7 @@ ThemeData themes(String theme) {
           fontFamily: 'Raleway',
           appBarTheme: AppBarTheme(
               textTheme: ThemeData.dark().textTheme.copyWith(
-                      title: TextStyle(
+                      headline6: TextStyle(
                     fontWeight: FontWeight.w100,
                     fontSize: 25,
                   ))));

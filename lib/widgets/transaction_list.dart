@@ -15,47 +15,52 @@ class TransactionList extends StatelessWidget {
       height: 500,
       child: ListView.builder(
         itemBuilder: (ctx, index) {
-          return OverviewTaskContainer()/* Card(
-            child: Row(
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.all(10),
-                  margin: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Theme.of(context).accentColor,
-                      width: 2,
-                    ),
-                  ),
-                  child: Center(
-                    child: Text(
-                      '£${transactions[index].amount.toStringAsFixed(2)}',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Theme.of(context).primaryColorDark,
+          return Padding(
+            padding: EdgeInsets.symmetric(vertical: 10.0),
+            child: Container(
+              width: double.infinity,
+              padding: EdgeInsets.all(8),
+              height: 80,
+              decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColor,
+                  borderRadius: BorderRadius.circular(20.0)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        width: 70,
+                        height: double.infinity,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                          color: Colors.black38,
+                        ),
+                        child: ClipRRect(
+                          child: Center(child: Text('£${transactions[index].amount.toStringAsFixed(2)}', style: TextStyle(color: Colors.white))),
+                        ),
                       ),
-                    ),
+                      SizedBox(width: 20),
+                      Text(transactions[index].title,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 20))
+                    ],
                   ),
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      transactions[index].title,
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                      ),
-                    ),
-                    Text(
-                      DateFormat('yMMMMd').format(transactions[index].date),
-                    ),
-                  ],
-                ),
-                
-              ],
+                  Row(children: [
+                    Text(DateFormat.yMMMMd().format(transactions[index].date),
+                        style: TextStyle(
+                            color: Colors.white54,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 12)),
+                    SizedBox(width: 20),
+                    
+                  ])
+                ],
+              ),
             ),
-          ) */;
+          );
         },
         itemCount: transactions.length,
       ),

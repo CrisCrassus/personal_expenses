@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:personal_expenses/themes/themes.dart';
 import 'package:personal_expenses/widgets/chart.dart';
@@ -11,13 +13,13 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   const MyApp({Key key}) : super(key: key);
 
-  final String themeTitle = 'frost';
+  
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Personal Expenses',
-      theme: themes(themeTitle),
+      theme: themes('frost'),
       home: MyHomePage(),
     );
   }
@@ -59,6 +61,8 @@ class _MyHomePageState extends State<MyHomePage> {
     }).toList();
   }
 
+  
+
   void _addNewTransaction(String txTitle, double txAmount) {
     final newTx = Transaction(
       id: DateTime.now().toString(),
@@ -78,13 +82,14 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      endDrawer: Drawer(child: Column(
-        children: [
-          SizedBox(height:80),
-          ListTile(title: Text('Theme Change'))
-        ],
-      ),),
+      
       appBar: AppBar(
+        actions: [
+          IconButton(onPressed: () {
+            String encode = jsonEncode(_userTransaction);
+            print(encode);
+          }, icon: Icon(Icons.save))
+        ],
         title: Text(
           'Personal Expenses',
         ),

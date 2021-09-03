@@ -3,7 +3,6 @@ import 'package:intl/intl.dart';
 import 'package:personal_expenses/models/transaction.dart';
 import 'package:personal_expenses/widgets/chart_bar.dart';
 
-
 class Chart extends StatelessWidget {
   final List<Transaction> recentTransactions;
 
@@ -13,14 +12,16 @@ class Chart extends StatelessWidget {
     return List.generate(
       7,
       (index) {
-        final weekDay = DateTime.now().subtract(Duration(days: index),);
+        final weekDay = DateTime.now().subtract(
+          Duration(days: index),
+        );
 
         double totalSum = 0.0;
 
         for (var i = 0; i < recentTransactions.length; i++) {
-          if (recentTransactions[i].date.day == weekDay.day 
-          && recentTransactions[i].date.month == weekDay.month
-          && recentTransactions[i].date.year == weekDay.year){
+          if (recentTransactions[i].date.day == weekDay.day &&
+              recentTransactions[i].date.month == weekDay.month &&
+              recentTransactions[i].date.year == weekDay.year) {
             totalSum += recentTransactions[i].amount;
           }
         }
@@ -29,7 +30,8 @@ class Chart extends StatelessWidget {
         print(totalSum);
 
         return {
-          'day': DateFormat.E().format(weekDay).substring(0, 1), 'amount' : totalSum
+          'day': DateFormat.E().format(weekDay).substring(0, 1),
+          'amount': totalSum
         };
       },
     );
@@ -46,16 +48,25 @@ class Chart extends StatelessWidget {
     print(groupedTransactionsValues);
     return Card(
       elevation: 6,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       margin: EdgeInsets.all(10),
-      child: Row(
-        children: groupedTransactionsValues.map(
-          (tx) {
-            return ChartBar(label: tx['day'], spendingAmount: tx['amount'], spendingPctOfTotal: maxSpending == 0.0 ? 0.0 : (tx['amount'] as double) / maxSpending,);
-          }
-        ).toList(),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Row(
+            children: groupedTransactionsValues.map((tx) {
+              return ChartBar(
+                label: tx['day'],
+                spendingAmount: tx['amount'],
+                spendingPctOfTotal: maxSpending == 0.0
+                    ? 0.0
+                    : (tx['amount'] as double) / maxSpending,
+              );
+            }).toList(),
+          ),
+        ),
       ),
     );
   }
 }
-
-
