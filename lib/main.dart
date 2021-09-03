@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:personal_expenses/widgets/new_transaction.dart';
-import 'package:personal_expenses/widgets/transaction_list.dart';
-import 'package:personal_expenses/widgets/transactions_item.dart';
-
-
+import 'package:personal_expenses/widgets/user_transaction.dart';
 
 void main() => runApp(MyApp());
 
@@ -18,26 +14,16 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends StatelessWidget {
+  final titleController = TextEditingController();
+  final amountController = TextEditingController();
 
   MyHomePage({Key key}) : super(key: key);
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  
-
-/*   String titleInput;
-  String amountInput; */
-
-  final titleController = TextEditingController();
-  final amountController = TextEditingController();
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(
           'Personal Expenses',
@@ -49,23 +35,19 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Card(
-                  color: Colors.blueGrey,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: [
-                        Center(child: Text('CHART')),
-                      ],
-                    ),
+              /* Card(
+                color: Colors.blueGrey,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Center(child: Text('CHART')),
+                    ],
                   ),
                 ),
-              ),
-              NewTransaction(),
-              TransactionList(),
+              ), */
+              UserTransaction(),
             ],
           ),
         ),
@@ -73,4 +55,3 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
-
