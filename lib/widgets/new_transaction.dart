@@ -1,16 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:personal_expenses/widgets/user_transaction.dart';
 
-class NewTransaction extends StatelessWidget {
-  final titleController = TextEditingController();
-  final amountController = TextEditingController();
+class NewTransaction extends StatefulWidget {
   final Function txHandler;
 
-  NewTransaction({Key key, this.txHandler}) : super(key: key);
+  NewTransaction({
+    Key key,
+    this.txHandler,
+  }) : super(key: key);
+
+  @override
+  _NewTransactionState createState() => _NewTransactionState();
+}
+
+class _NewTransactionState extends State<NewTransaction> {
+  final titleController = TextEditingController();
+
+  final amountController = TextEditingController();
 
   void submitData() {
-
-    txHandler(
+    widget.txHandler(
       titleController.text,
       double.parse(amountController.text),
     );
@@ -18,7 +26,6 @@ class NewTransaction extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('------> Building NewTransaction');
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -38,11 +45,17 @@ class NewTransaction extends StatelessWidget {
               decoration: InputDecoration(
                 labelText: 'Amount',
               ),
-              onSubmitted: (_) => submitData(),
+              /* onSubmitted: (_) => submitData(), */
             ),
             TextButton(
               onPressed: () {
-                submitData();
+                
+                widget.txHandler(
+                  titleController.text,
+                  double.parse(amountController.text),
+                );
+                titleController.clear();
+                amountController.clear();
               },
               child: Text('Add Transaction'),
             )

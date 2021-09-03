@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:personal_expenses/widgets/new_transaction.dart';
 import 'package:personal_expenses/widgets/transaction_list.dart';
-import 'package:personal_expenses/widgets/user_transaction.dart';
 
 import 'models/transaction.dart';
 
@@ -26,6 +25,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+
   final List<Transaction> _userTransaction = [
     Transaction(
       id: 't1',
@@ -40,7 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
       date: DateTime.now(),
     ),
     Transaction(
-      id: 't2',
+      id: 't3',
       title: 'New Phone',
       amount: 132.78,
       date: DateTime.now(),
@@ -56,7 +56,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
 
     //call set state to update user list
-
+    Navigator.pop(context);
     setState(() {
       _userTransaction.add(newTx);
     });
@@ -89,7 +89,6 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
               ), */
-              NewTransaction(txHandler: _addNewTransaction),
               TransactionList(_userTransaction),
             ],
           ),
@@ -102,7 +101,7 @@ class _MyHomePageState extends State<MyHomePage> {
           showModalBottomSheet(
             context: context,
             builder: (bContext) {
-              return ;
+              return NewTransaction(txHandler: _addNewTransaction);
             },
           );
         },
