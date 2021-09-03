@@ -36,7 +36,10 @@ class NewTransaction extends StatelessWidget {
               ),
             ),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                txHandler(
+                    titleController.text, double.parse(amountController.text));
+              },
               child: Text('Add Transaction'),
             )
           ],
