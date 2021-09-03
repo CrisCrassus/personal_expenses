@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:personal_expenses/widgets/new_transaction.dart';
+import 'package:personal_expenses/widgets/transaction_list.dart';
 import 'package:personal_expenses/widgets/user_transaction.dart';
 
 import 'models/transaction.dart';
@@ -25,7 +26,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  /* final List<Transaction> _userTransaction = [
+  final List<Transaction> _userTransaction = [
     Transaction(
       id: 't1',
       title: 'New Shoes',
@@ -53,13 +54,13 @@ class _MyHomePageState extends State<MyHomePage> {
       amount: txAmount,
       date: DateTime.now(),
     );
-  } */
 
-/*   void startAddNewTransaction(BuildContext ctx) {
-    showModalBottomSheet(context: ctx, builder: (bCtx) {
-      return NewTransaction(txHandler: _addNewTransaction);
+    //call set state to update user list
+
+    setState(() {
+      _userTransaction.add(newTx);
     });
-  } */
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -88,7 +89,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                 ),
               ), */
-              UserTransaction(),
+              NewTransaction(txHandler: _addNewTransaction),
+              TransactionList(_userTransaction),
             ],
           ),
         ),
@@ -96,7 +98,14 @@ class _MyHomePageState extends State<MyHomePage> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        onPressed: () {},
+        onPressed: () {
+          showModalBottomSheet(
+            context: context,
+            builder: (bContext) {
+              return ;
+            },
+          );
+        },
       ),
     );
   }

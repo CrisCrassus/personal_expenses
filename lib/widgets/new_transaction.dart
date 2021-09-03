@@ -9,16 +9,10 @@ class NewTransaction extends StatelessWidget {
   NewTransaction({Key key, this.txHandler}) : super(key: key);
 
   void submitData() {
-    final enteredTitle = titleController.text;
-    final enteredAmount = double.parse(amountController.text);
-
-    if (enteredTitle.isEmpty || enteredAmount <= 0) {
-      return;
-    }
 
     txHandler(
-      enteredTitle,
-      enteredAmount,
+      titleController.text,
+      double.parse(amountController.text),
     );
   }
 
