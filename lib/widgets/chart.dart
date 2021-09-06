@@ -34,7 +34,7 @@ class Chart extends StatelessWidget {
           'amount': totalSum
         };
       },
-    );
+    ).reversed.toList();
   }
 
   double get maxSpending {
@@ -46,24 +46,27 @@ class Chart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print(groupedTransactionsValues);
-    return Card(
-      elevation: 6,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      margin: EdgeInsets.all(10),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Row(
-            children: groupedTransactionsValues.map((tx) {
-              return ChartBar(
-                label: tx['day'],
-                spendingAmount: tx['amount'],
-                spendingPctOfTotal: maxSpending == 0.0
-                    ? 0.0
-                    : (tx['amount'] as double) / maxSpending,
-              );
-            }).toList(),
+    return Container(
+      //height: MediaQuery.of(context).size.height * 0.175,
+      child: Card(
+        elevation: 6,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        //margin: EdgeInsets.all(),
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Padding(
+            padding: const EdgeInsets.all(5.0),
+            child: Row(
+              children: groupedTransactionsValues.map((tx) {
+                return ChartBar(
+                  label: tx['day'],
+                  spendingAmount: tx['amount'],
+                  spendingPctOfTotal: maxSpending == 0.0
+                      ? 0.0
+                      : (tx['amount'] as double) / maxSpending,
+                );
+              }).toList(),
+            ),
           ),
         ),
       ),
